@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const Section = ({ children }) => {
+  return <SectionWrapper>{children}</SectionWrapper>;
+};
+
+export default Section;
+
 // styled components
 const SectionWrapper = styled.section`
   display: flex;
@@ -12,9 +18,3 @@ const SectionWrapper = styled.section`
     align-items: center;
   }
 `;
-
-const Section = ({ children }) => {
-  return <SectionWrapper>{children}</SectionWrapper>;
-};
-
-export default Section;

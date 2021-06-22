@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
@@ -14,7 +14,7 @@ import styles from "./styles/app.module.scss";
 
 function App() {
   const modal = useSelector((state) => state.actions.modal);
-  console.log(modal);
+
   return (
     <Router>
       <div id={styles.app}>

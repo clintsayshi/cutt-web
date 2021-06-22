@@ -81,7 +81,6 @@ const Input = styled.input`
     //min-width: 70%;
   }
 `;
-const Username = styled(Input)``;
 
 const Button = styled.button`
   border: none;

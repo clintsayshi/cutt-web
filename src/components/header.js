@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { VscAdd, VscBell, VscBellDot, VscSearch } from "react-icons/vsc";
+import { VscAdd, VscBell, VscSearch } from "react-icons/vsc";
 import styled from "styled-components";
 
 const Header = () => {

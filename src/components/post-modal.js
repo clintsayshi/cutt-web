@@ -3,8 +3,6 @@ import { VscClose, VscArrowDown, VscTriangleLeft } from "react-icons/vsc";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
-import img from "../assets/clb-01.jpeg";
-
 const PostModal = () => {
   const post = useSelector((state) => state.post);
   const dispatch = useDispatch();

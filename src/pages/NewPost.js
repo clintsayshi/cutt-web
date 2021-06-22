@@ -1,16 +1,12 @@
 import { useState } from "react";
-import { VscClose, VscFileMedia } from "react-icons/vsc";
-import { FiScissors } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import img from "../assets/clb-03.jpeg";
 import ImageUploader from "../components/image-uploader";
 
 const NewPost = () => {
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts);
   const [post, setPost] = useState({
     name: null,
     image: null,
@@ -86,34 +82,6 @@ const TextInput = styled.input`
   font-weight: normal;
   font-family: "poppins", sans-serif;
 `;
-const MediaContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 0.5rem;
-  //border: 1px dotted blue;
-`;
-const MediaItem = styled.figure`
-  position: relative;
-  width: 100px;
-  border-radius: 10px;
-
-  &:after {
-    position: absolute;
-    content: "";
-    inset: 0;
-    background-color: black;
-    opacity: 0.5;
-    border-radius: inherit;
-  }
-`;
-const MediaItemImage = styled.img`
-  max-width: 100%;
-  display: block;
-  border-radius: inherit;
-  position: relative;
-`;
-
 const ActionButtons = styled.div`
   width: 100%;
   //border: 1px dotted blue;
@@ -137,27 +105,4 @@ const PostBtn = styled(Button)`
   text-transform: uppercase;
   color: white;
   //font-weight: bold;
-`;
-
-const ActionButton = styled(Button)`
-  padding: 0.5rem;
-  line-height: 0;
-  font-size: 1.5rem;
-  background-color: white;
-  border: 1px solid black;
-`;
-
-const RemoveBtn = styled.button`
-  position: absolute;
-  padding: 2px;
-  right: 5px;
-  top: 5px;
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 1rem;
-  line-height: 0;
-  background-color: black;
-  box-shadow: 0 0 0.5px 0.5px #fff;
-  z-index: 5;
 `;

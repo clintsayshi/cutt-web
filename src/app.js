@@ -10,8 +10,6 @@ import Profile from "./pages/profile";
 import NewPost from "./pages/NewPost";
 import PostModal from "./components/post-modal";
 
-import { AuthProvider } from "./contexts/AuthContext";
-
 import styles from "./styles/app.module.scss";
 
 function App() {
@@ -19,26 +17,24 @@ function App() {
 
   return (
     <Router>
-      <AuthProvider>
-        <div id={styles.app}>
-          <Switch>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/notifs" exact component={Notifs} />
-            <Route path="/profile" exact component={Profile} />
-            <Route path="/create-post" exact component={NewPost} />
-          </Switch>
-          {modal && <PostModal />}
-          {modal && <Overlay />}
-        </div>
-      </AuthProvider>
+      <div id={styles.app}>
+        <Switch>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/notifs" exact component={Notifs} />
+          <Route path="/profile" exact component={Profile} />
+          <Route path="/create_post" exact component={NewPost} />
+        </Switch>
+        {modal && <PostModal />}
+        {modal && <Overlay />}
+      </div>
     </Router>
   );
 }

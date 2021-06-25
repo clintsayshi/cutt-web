@@ -1,3 +1,0 @@
-const initial = {
-  loggedin: false,
-};

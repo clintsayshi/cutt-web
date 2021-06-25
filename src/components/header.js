@@ -1,26 +1,27 @@
-import { Link, useHistory } from "react-router-dom";
-import { VscAdd, VscBell, VscAccount } from "react-icons/vsc";
+import { Link } from "react-router-dom";
+import { VscAdd, VscBell, VscSearch } from "react-icons/vsc";
 import styled from "styled-components";
 
 const Header = () => {
-  const history = useHistory();
-  const createPost = () => {
-    history.push("/create-post");
-  };
-  const openProfile = () => {
-    history.push("/profile");
-  };
-
   return (
     <HeaderWrapper>
       <h2>Cutt</h2>
 
       <Nav>
-        <Button onClick={createPost}>
-          <VscAdd />
+        <AddBtn>
+          <Link to="/create_post">
+            <VscAdd />
+          </Link>
+        </AddBtn>
+        <Button>
+          <Link to="search">
+            <VscSearch />
+          </Link>
         </Button>
-        <Button onClick={openProfile}>
-          <VscAccount />
+        <Button>
+          <Link to="/notifs">
+            <VscBell />
+          </Link>
         </Button>
       </Nav>
     </HeaderWrapper>
@@ -45,28 +46,28 @@ const HeaderWrapper = styled.header`
 `;
 const Nav = styled.div`
   display: flex;
-  column-gap: 0.75rem;
+  column-gap: 0.5rem;
   align-items: center;
   //border: 1px dotted blue;
 `;
 const Button = styled.button`
   border: none;
   border-radius: 5px;
-  padding: 0.25rem 0.25rem;
+  line-height: 0;
+  padding: 0.25rem 0;
   background: none;
   border: 2px solid transparent;
-  cursor: pointer;
 
-  line-height: 0;
-  font-size: 1.5rem;
-  color: black;
-  font-weight: 500;
-
-  &:hover {
-    background-color: whitesmoke;
+  & > * {
+    color: black;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 0 0.25rem;
+    border-radius: inherit;
+    line-height: 0;
   }
 `;
 
 const AddBtn = styled(Button)`
-  //border-color: black;
+  border: 2px solid black;
 `;

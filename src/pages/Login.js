@@ -1,50 +1,26 @@
-import React, { useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { useAuth } from "../contexts/AuthContext";
-
 export default function Login() {
-  // Input fields references
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  // Error handling
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  //
-  const { signin } = useAuth();
-  const history = useHistory();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    console.log(emailRef.current.value, passwordRef.current.value);
-    // sign in on firebase
-
-    setLoading(false);
-  }
-
   return (
     <LoginWrapper className="container">
       <Header>
         <h1>Sign in</h1>
         <p>into your Cutt account</p>
       </Header>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <Input
           placeholder="Enter your username"
           type="text"
           max="10"
-          autoComplete="false"
-          ref={emailRef}
+          autoComplete={false}
           required
         />
         <Input
           placeholder="Enter your password"
           type="password"
-          autoComplete="false"
           max="18"
-          ref={passwordRef}
           required
         />
 
@@ -60,9 +36,12 @@ export default function Login() {
 
 // styled components
 const LoginWrapper = styled.main`
+  //border: 1px dotted blue;
   position: relative;
   height: fit-content;
+  //inset: 0;
   top: 15%;
+  //transform: translateY(-50%);
 
   @media (min-width: 769px) {
     padding: 0 6rem;

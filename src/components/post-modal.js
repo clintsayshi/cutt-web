@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
-import { VscClose, VscArrowDown, VscTriangleLeft } from "react-icons/vsc";
+import { Link, useHistory } from "react-router-dom";
+import {
+  VscClose,
+  VscArrowDown,
+  VscTriangleLeft,
+  VscTriangleRight,
+} from "react-icons/vsc";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
 const PostModal = () => {
   const post = useSelector((state) => state.post);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const closePost = () => {
     dispatch({
@@ -14,13 +20,18 @@ const PostModal = () => {
     });
   };
 
+  const gotoProfile = () => {
+    history.push("/");
+    closePost();
+  };
+
   console.log(post);
 
   return (
     <Modal className="container">
       <ImageContainer>
         <Header>
-          <BusinessName to="/profile">{post.name}</BusinessName>
+          <ProfileBtn onClick={gotoProfile}>{post.name}</ProfileBtn>
           <Close onClick={closePost}>
             <VscClose />
           </Close>
@@ -31,7 +42,9 @@ const PostModal = () => {
         <Button>
           <VscTriangleLeft />
         </Button>
-        <Button>next</Button>
+        <Button>
+          <VscTriangleRight />
+        </Button>
       </Nav>
 
       <ActionBtn>
@@ -86,14 +99,6 @@ const Header = styled.header`
   align-items: center;
 `;
 
-const BusinessName = styled(Link)`
-  text-decoration: none;
-  color: black;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 const Button = styled.button`
   display: block;
   height: 100%;
@@ -102,6 +107,13 @@ const Button = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+`;
+
+const ProfileBtn = styled(Button)`
+  width: fit-content;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Close = styled(Button)`

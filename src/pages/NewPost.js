@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, history, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
@@ -7,6 +7,7 @@ import ImageUploader from "../components/image-uploader";
 
 const NewPost = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [post, setPost] = useState({
     name: null,
     image: null,
@@ -21,13 +22,17 @@ const NewPost = () => {
     });
   };
 
+  const goHome = () => {
+    history.push("/");
+  };
+
   const addPost = () => {
     if (post.name && post.image) {
       dispatch({
         type: "ADD_POST",
         payload: post,
       });
-      console.log("Added");
+      goHome();
     } else {
       console.log("add both image and name for post...");
     }
@@ -36,6 +41,7 @@ const NewPost = () => {
   return (
     <div className="container">
       <Header>
+        <Button onClick={goHome}>Cancel</Button>
         <h2>New cutt</h2>
         <PostBtn onClick={addPost}>Post</PostBtn>
       </Header>
